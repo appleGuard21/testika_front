@@ -1,0 +1,21 @@
+<div class="contactBox" style="display: flex; justify-content: space-between; margin-bottom: 24px">
+  <div style="display: flex;">
+    <img style="margin-right: 16px" *ngIf="!imageToShow; else avatar" src="../../../assets/svg/userIcon.svg" alt="user icon">
+    <ng-template #avatar>
+      <div class="avatar" [style]="{backgroundImage: imageToShow}"></div>
+    </ng-template>
+    <p style="font-size: 16px; margin-bottom: 0; display: flex; align-items: center">{{contact.username}}</p>
+  </div>
+  <button mat-icon-button color="primary" [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button *ngIf="myTests.length>0" mat-menu-item type="button" [matMenuTriggerFor]="myContacts">Дать задание</button>
+    <button mat-menu-item type="button" (click)="deleteContact()">Удалить</button>
+  </mat-menu>
+  <mat-menu #myContacts="matMenu">
+    <div *ngFor="let test of myTests">
+      <button mat-menu-item (click)="giveTask(test.id)">{{test.title}}</button>
+    </div>
+  </mat-menu>
+</div>

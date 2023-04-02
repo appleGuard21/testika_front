@@ -1,0 +1,68 @@
+<div class="createTestContainer">
+<form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+  <div style="display: flex; margin-bottom: 16px">
+    <div style="position: relative; margin-right: 32px">
+      <label for="avatar-input-file">
+        <div class="icon-wrapper">
+          <input id="avatar-input-file" type="file" accept="image/*" (change)="onFileChange($event)">
+          <mat-icon style="color: white">edit</mat-icon>
+        </div>
+      </label>
+      <div class="imageContainer" [style]="backgroundImage ? {backgroundImage: backgroundImage} : {backgroundImage: defaultImage}"></div>
+    </div>
+    <div style="width: 100%">
+      <mat-form-field class="testTitle" appearance="outline">
+        <mat-label>Заголовок</mat-label>
+        <input type="text" placeholder="Заголовок" formControlName="title" matInput>
+      </mat-form-field>
+    </div>
+  </div>
+  <div style="margin-bottom: 16px" formArrayName="questions">
+    <div *ngFor="let question of questions.controls; let i=index">
+      <div style="margin-bottom: 16px" [formGroupName]="i">
+        <div style="display: flex;">
+          <span style="font-weight: 600; font-size: 18px; margin-right: 8px; padding-top: 20px;">{{i+1}}</span>
+          <mat-form-field style="width: 100%" appearance="outline">
+            <mat-label>Вопрос</mat-label>
+            <input  type="text" placeholder="Вопрос" formControlName="title" matInput>
+            <button class="deleteBtn" matSuffix mat-icon-button color="warn" type="button" (click)="onDeleteQuestion(i)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div class="answers" formArrayName="answers">
+          <div *ngFor="let answer of answers(i).controls; let j=index">
+            <div [formGroupName]="j">
+              <mat-checkbox color="primary" style="margin-right: 4px;" formControlName="right"></mat-checkbox>
+              <mat-form-field style="margin-right: 32px;" appearance="outline">
+                <mat-label>Ответ</mat-label>
+                <input type="text" placeholder="Ответ" formControlName="title" matInput>
+                <button class="deleteBtn" matSuffix mat-icon-button color="warn" type="button" (click)="onDeleteAnswer(i, j)">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div style="margin-left: 20px">
+          <button style="padding: 6px 51px; margin-bottom: 32px" mat-stroked-button color="primary" type="button" (click)="onAddAnswer(i)">
+            <img style="margin-right: 4px" src="assets/svg/addAnswer.svg" alt="add answer">
+            Добавить ответ
+          </button>
+        </div>
+      </div>
+    </div>
+    <div style="margin-left: 20px">
+      <button style="width: 100%; padding: 8px 0; font-size: 18px; margin-bottom: 32px" mat-stroked-button color="primary" type="button" (click)="onAddQuestion()">
+        <img style="margin-right: 4px" src="assets/svg/addQuestion.svg" alt="add answer">
+        Добавить вопрос
+      </button>
+    </div>
+  </div>
+  <button style="border-radius: 32px; padding: 4px 24px;" mat-raised-button color="primary" type="submit">
+    <span style="margin-right: 8px; color: white; font-size: 18px">Завершить</span>
+    <img src="assets/svg/check.svg" alt="add answer">
+  </button>
+</form>
+</div>
+

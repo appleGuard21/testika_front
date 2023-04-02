@@ -1,0 +1,35 @@
+<div style="padding-top: 50px">
+  <div class="loginContainer">
+    <div style="margin-top: 32px;">
+      <img (click)="toStart()" style="margin-bottom: 80px; cursor: pointer" src="assets/svg/testika.svg" alt="logo">
+      <h1 style="font-size: 36px; font-weight: 400; line-height: 42px; margin-bottom: 8px">Вход</h1>
+      <div style="margin-bottom: 8px; color: red; background: none; height: 24px">
+        <span *ngIf="loginForm.errors?.['unauthenticated']">Неверный логин или пароль</span>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="formField">
+              <mat-form-field hideRequiredMarker style="width: 300px" appearance="outline">
+                <mat-label>Логин</mat-label>
+                <input type="text" placeholder="Логин" formControlName="username" matInput>
+                <mat-error *ngIf="loginForm.invalid">{{getLoginErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="formField">
+              <mat-form-field hideRequiredMarker style="width: 300px" appearance="outline">
+                <mat-label>Пароль</mat-label>
+                <input [type]="hide ? 'password' : 'text'" placeholder="Пароль" formControlName="password" matInput>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon color="primary">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="loginForm.invalid">{{getPasswordErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div>
+            <button style="display:block; margin-right: 8px; background-color: #1CB0E9; color: white; font-size: 16px;  border-radius: 32px; padding: 4px 32px; box-shadow: none " mat-raised-button>Войти</button>
+          </form>
+    </div>
+    <div>
+      <img src="assets/svg/greetIl.svg" alt="greeting illustration">
+    </div>
+  </div>
+</div>
+

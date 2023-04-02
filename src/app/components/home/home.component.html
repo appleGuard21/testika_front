@@ -1,0 +1,32 @@
+<div style="padding: 32px 32px">
+    <div *ngIf="tests.length>0" style="margin-bottom: 32px">
+      <button  (click)="newTest()" mat-raised-button style="border-radius: 32px; padding: 8px 24px; background: linear-gradient(180deg, #26AFE9 0%, #93E9F3 100%);">
+        <span style="color: white; font-size: 24px; margin-right: 8px">Новый тест</span>
+        <img src="../../../assets/svg/addQuestion.svg" alt="add test">
+      </button>
+    </div>
+    <div *ngIf="tests.length>0">
+      <mat-form-field style="width: 100%; margin-bottom: 0;" appearance="outline">
+        <mat-label>
+          <mat-icon style="margin-right: 4px">search</mat-icon>
+          Поиск
+        </mat-label>
+        <input type="text" placeholder="Поиск" matInput [(ngModel)]="search">
+      </mat-form-field>
+    </div>
+  <div *ngIf="tests.length>0">
+    <mat-grid-list cols="3" rowHeight="332px">
+      <mat-grid-tile *ngFor="let test of tests | filter:search">
+        <app-card [contacts]="contacts" [test]="test" (deleteEvent)="deleteTest($event)"></app-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div *ngIf="tests.length===0">
+    <div>
+      <button (click)="newTest()" mat-raised-button style="border-radius: 32px; padding: 8px 24px; background: linear-gradient(180deg, #26AFE9 0%, #93E9F3 100%);">
+        <span style="color: white; font-size: 24px; margin-right: 8px">Новый тест</span>
+        <img src="../../../assets/svg/addQuestion.svg" alt="add test">
+      </button>
+    </div>
+  </div>
+</div>

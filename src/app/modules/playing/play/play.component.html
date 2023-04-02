@@ -1,0 +1,28 @@
+<div class="containerForPlay">
+  <p style="opacity: 50%; display: flex; justify-content: flex-end;">{{pointer+1}}/{{test.questions.length}}</p>
+  <mat-progress-bar style="height: 10px; border-radius: 8px; margin-bottom: 50px"
+                    mode="determinate" color="primary" [value]="process(pointer)"></mat-progress-bar>
+  <h1 class="play-QuestionTitle">{{test.questions.at(pointer)?.title}}</h1>
+
+    <mat-grid-list cols="2" rowHeight="100px">
+      <mat-grid-tile *ngFor="let answer of test.questions.at(pointer)?.answers;">
+        <span appCheckAnswer class="answerBox" (click)="answer.checked = !answer.checked">
+          {{answer.title}}
+        </span>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  <div style="display: flex; justify-content: flex-end">
+    <button *ngIf="!isLast; else finishBtn" type="button" mat-raised-button style="border-radius: 32px; padding: 8px 24px; background: linear-gradient(180deg, #26AFE9 0%, #93E9F3 100%);" (click)="nextQuestion()">
+      <span style="color: white; font-size: 24px; margin-right: 8px">Далее</span>
+      <img src="assets/svg/next.svg" alt="add test">
+    </button>
+    <ng-template #finishBtn>
+      <button type="button" mat-raised-button style="border-radius: 32px; padding: 8px 24px; background: linear-gradient(180deg, #26AFE9 0%, #93E9F3 100%);" (click)="finish()">
+        <span style="color: white; font-size: 24px; margin-right: 8px">Завершить</span>
+        <img src="assets/svg/check.svg" alt="add test">
+      </button>
+    </ng-template>
+  </div>
+</div>
+

@@ -1,0 +1,32 @@
+<mat-toolbar class="header">
+  <button class="menuBtn" onclick="this.blur()" mat-icon-button (click)="openDrawer()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img src="../../../assets/svg/logo.svg" alt="logo">
+  <span class="spacer"></span>
+  <div>
+    <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger aria-label="Example icon-button with a menu">
+      <img *ngIf="!imageToShow; else avatar" src="../../../assets/svg/userIcon.svg" alt="user icon">
+      <ng-template #avatar>
+        <div class="avatar" [style]="{backgroundImage: imageToShow}"></div>
+      </ng-template>
+    </button>
+    <mat-menu #menu="matMenu">
+      <div style="display: flex; align-items: center; padding: 8px">
+        <div>
+          <mat-icon (click)="openDialog()" style="margin-right: 8px; cursor: pointer">account_circle</mat-icon>
+        </div>
+        <div>
+          <span>{{username}}</span>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="logout()">
+        <span style="margin-right: 8px">Выйти</span>
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+

@@ -1,0 +1,26 @@
+.avatar{
+  border: none;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  background-position: center;
+  background-size: cover;
+}
+.icon-wrapper {
+  background-color: #1CB0E9;
+  border-radius: 50%;
+  position: absolute;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  top: 65%;
+}
+
+
+input[type='file'] {
+  display: none;
+}

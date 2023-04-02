@@ -1,0 +1,41 @@
+.containerForPlay {
+  padding: 8px 200px 16px 200px;
+}
+
+.play-QuestionTitle {
+  font-weight: 400;
+  font-size: 32px;
+  width: 100%;
+  /*border-bottom: 2px solid rgba(103, 58, 183, 0.5);*/
+  margin-bottom: 32px;
+}
+
+/*.answerBox {*/
+/*  width: 400px;*/
+/*  border: 2px solid #1CB0E9;*/
+/*  border-radius: 8px;*/
+/*  !*box-shadow: 5px 5px 5px -5px rgba(47, 34, 80, 0.6);*!*/
+/*  padding: 12px;*/
+/*  !*display: flex;*!*/
+/*  !*align-content: center;*!*/
+/*  margin-bottom: 24px;*/
+/*}*/
+
+.playBtn {
+  width: 100px;
+}
+
+.answerBox {
+  cursor: pointer;
+  padding: 16px 0;
+  border: 2px solid #1CB0E9;
+  width: 380px;
+  display: flex;
+  justify-content: center;
+  border-radius: 32px;
+}
+
+.answerBoxChecked {
+  background: #1CB0E9;
+}
+

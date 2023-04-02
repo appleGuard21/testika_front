@@ -1,0 +1,13 @@
+<form [formGroup]="myForm" (ngSubmit)="addContact()">
+  <mat-form-field hideRequiredMarker style="width: 100%; " appearance="outline">
+    <mat-label>Логин</mat-label>
+    <input type="text" placeholder="Логин" formControlName="name" matInput>
+    <mat-error *ngIf="myForm.invalid">{{getLoginErrorMessage()}}</mat-error>
+  </mat-form-field>
+  <div style="display: flex; justify-content: end">
+    <button mat-raised-button color="primary" style="color: white">Добавить</button>
+  </div>
+</form>
+
+
+

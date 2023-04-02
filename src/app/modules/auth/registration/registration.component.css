@@ -1,0 +1,12 @@
+.registrationContainer {
+  width: 1090px;
+  margin: 0 auto;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  padding-left: 100px;
+}
+.formField {
+  margin-bottom: 8px;
+}

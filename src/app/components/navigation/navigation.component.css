@@ -1,0 +1,17 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.menuBtn {
+  margin-right: 16px;
+  color: #1CB0E9;
+}
+
+.avatar{
+  border:none;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  height: 36px;
+  width: 36px;
+}

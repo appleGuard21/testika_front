@@ -1,0 +1,24 @@
+<div style="padding: 32px 32px">
+  <div style="margin-bottom: 32px">
+    <button  (click)="openDialog()" mat-raised-button style="border-radius: 32px; padding: 8px 24px; background: linear-gradient(180deg, #26AFE9 0%, #93E9F3 100%);">
+      <span style="color: white; font-size: 16px; margin-right: 8px">Добавить контакт</span>
+      <img src="../../../assets/svg/addAnswer.svg" alt="add test">
+    </button>
+  </div>
+  <div style="margin-bottom: 32px">
+    <mat-form-field style="width: 100%;" appearance="outline">
+      <mat-label>
+        <mat-icon style="margin-right: 4px">search</mat-icon>
+        Поиск
+      </mat-label>
+      <input type="text" placeholder="Поиск" matInput [(ngModel)]="search">
+    </mat-form-field>
+  </div>
+  <div *ngFor="let contact of contacts | filterUsersByName:search">
+    <app-contact [myTests]="myTests" [contact]="contact" (deleteEvent)="deleteContact($event)"></app-contact>
+  </div>
+</div>
+<app-modal *ngIf="modalService.isVisible$ | async">
+  <app-add-contact (newContactEvent)="pushContactToList($event)"></app-add-contact>
+</app-modal>
+

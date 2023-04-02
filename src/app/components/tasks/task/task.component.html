@@ -1,0 +1,18 @@
+<div>
+  <mat-card class="card">
+    <img *ngIf="!testImage" mat-card-image alt="card image" src="../../../../assets/svg/cardDefaultImage.svg">
+    <img *ngIf="testImage" mat-card-image alt="card image" [src]="testImage">
+    <mat-card-content style="margin-bottom: 0;">
+      <p>{{test.title}}</p>
+    </mat-card-content>
+    <mat-card-actions style="display: flex; justify-content: space-between">
+      <button style="display: block" mat-button  color="primary" type="button" (click)="play()">Начать</button>
+      <button  style="display: block" mat-icon-button color="primary" [matMenuTriggerFor]="menu">
+        <mat-icon>more_horiz</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item type="button" (click)="deleteTask()">Удалить</button>
+      </mat-menu>
+    </mat-card-actions>
+  </mat-card>
+</div>

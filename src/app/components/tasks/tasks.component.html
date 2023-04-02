@@ -1,0 +1,27 @@
+<div style="padding: 32px 32px">
+  <h1 *ngIf="tests.length>0; else h1Else">Мои задания:</h1>
+  <ng-template #h1Else>
+    <div style="display: flex; justify-content: center;">
+      <div>
+        <h1 style="display: flex; justify-content: center; margin-bottom: 32px; border-bottom: 2px solid rgba(235, 235, 235, 1)">У вас пока нет заданий</h1>
+        <img src="../../../assets/svg/noTasks.svg" alt="no tasks">
+      </div>
+    </div>
+  </ng-template>
+  <div *ngIf="tests.length>0">
+    <mat-form-field style="width: 100%; margin-bottom: 0;" appearance="outline">
+      <mat-label>
+        <mat-icon style="margin-right: 4px">search</mat-icon>
+        Поиск
+      </mat-label>
+      <input type="text" placeholder="Поиск" matInput [(ngModel)]="search">
+    </mat-form-field>
+  </div>
+  <div *ngIf="tests.length>0">
+    <mat-grid-list cols="3" rowHeight="332px">
+      <mat-grid-tile *ngFor="let test of tests | filter:search">
+        <app-task (deleteEvent)="deleteTask($event)" [test]="test"></app-task>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

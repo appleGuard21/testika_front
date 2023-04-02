@@ -1,0 +1,14 @@
+.containerForGreeting {
+  width: 1090px;
+  margin: 0 auto;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  padding-left: 100px;
+}
+.slogan {
+  width: 200px;
+}
+
+

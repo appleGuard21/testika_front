@@ -1,0 +1,16 @@
+<div style="position: relative">
+  <h1 mat-dialog-title>{{data.username}}</h1>
+  <div style="margin-bottom: 8px" mat-dialog-content>
+    <div [style]="data.imageToShow ? {backgroundImage: data.imageToShow} : {backgroundImage: defaultImage}" class="avatar"></div>
+    <label for="avatar-input-file">
+      <div class="icon-wrapper">
+        <input type="file" id="avatar-input-file" accept="image/*" (change)="onFileChange($event)"/>
+        <mat-icon style="color: white">edit</mat-icon>
+      </div>
+    </label>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data.imageToShow">Закрыть</button>
+  </div>
+</div>
+
